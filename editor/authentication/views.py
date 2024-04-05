@@ -5,13 +5,13 @@ from django.contrib.auth import authenticate, login as auth_login, logout as aut
 from django.contrib.auth.models import User
 
 def home(request):
-    return render(request, 'auth/index.html')
+    return render(request, 'auth/login.html')
 
 def login(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
-            # Authenticate the user
+            
             user = authenticate(request, username=form.cleaned_data['rollnumber'], password=form.cleaned_data['password'])
             
             if user is not None:
