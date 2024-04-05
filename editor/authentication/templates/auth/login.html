@@ -3,69 +3,73 @@
 {% block content %}
 <style>
     .centered-text {
-      text-align: center;
-      margin-top: 100px;
-      font-size: 64px;
-      font-family: "K2D", sans-serif;
-  font-weight: 800;
-  font-style: normal; 
-      color: #000;
+        text-align: center;
+        margin-top: 100px;
+        font-size: 64px;
+        font-family: "K2D", sans-serif;
+        font-weight: 800;
+        font-style: normal; 
+        color: #000;
     }
-    .k2d-extrabold {
-  font-family: "K2D", sans-serif;
-  font-weight: 800;
-  font-style: normal;
-}
-    #line{
+
+    #line {
         color: #54A9D7;
         border: 2px;
         border-style: solid;
         width: 355px;
         height: 17px;
-        background-color:#54A9D7;
+        background-color: #54A9D7;
         border-color: #54A9D7;
         position: relative;
         top: 275px;
         left: 50px;
     }
-    .centered-text2{
-        text-align: center;
-    }
+
     .parent-div {
-      display: flex; 
+        display: flex; 
+        justify-content: center; /* Center the content horizontally */
+        align-items: center; /* Center the content vertically */
     }
-    
+
     .child-div1 {
-   flex: 1;
-  margin: 10px; 
-  height: 559px; 
-left: 100px;
-}
+        flex: 1;
+        margin: 10px; 
+        height: 559px; 
+        left: 100px;
+    }
 
     .child-div {
-      flex: 1; 
-      border: 1px solid black; 
-      padding: 20px; 
-      margin: 10px; 
+        flex: 1; 
+        border-radius: 78px; /* Rounded edges */
+        background-color: white;
+        margin: 10px; 
+        width: 400px;
+        height: 559px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Shadow effect */
+        text-align: center; /* Center the content horizontally */
     }
-  </style>
+
+    .login-btn {
+        color: #000;
+        border-radius: 21px; /* Rounded edges for button */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Shadow effect for button */
+    }
+</style>
   
 <div class="parent-div">
     <div  class="child-div1">
-        <hr id="line" >
-      <div class="centered-text" >Programming examination made efficient</div>
+        <hr id="line">
+        <div class="centered-text">Programming examination made efficient</div>
     </div>
     <div class="child-div">
-      <div class="centered-text2" >
-        <form action="{% url 'login' %}" method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn btn-primary">Login</button>
-        </form> <div>
-          
+        <div>
+            <div class="centered-text" style="font-size: 40px; margin-top: 30px; color: black;">Login</div>
+            <form action="{% url 'login' %}" method="post" class="form-outline mb-4">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-outline-light btn-lg px-5 login-btn">Login</button>
+            </form>
+        </div>
     </div>
-  </div>
-  
-
-    
+</div>
 {% endblock content %}
