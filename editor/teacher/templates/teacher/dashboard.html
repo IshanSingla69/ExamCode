@@ -1,13 +1,43 @@
 {% extends 'base.html' %} 
-{% block content %}
+{% block content %} 
+{% if messages %}
+<ul class="messages">
+  {% for message in messages %}
+  <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>
+    {{ message }}
+  </li>
+  {% endfor %}
+</ul>
+{% endif %} 
 
-    
-    
-        
-
-    <form action="{%url 'add_test'%}" method="post">
-        {% csrf_token %}
-        <button type="submit" class="btn btn-primary">Create Test</button>
-    </form>
+<div class="card mt-5 mb-5" style="border-radius: 25px; color:black">
+  <div class="card-body">
+    <div class="container">
+        <h2>Created Tests</h2>
+      <div class="row">
+        <div class="col-md-6"> <!-- Adjust this value to your needs -->
+            {% for test in tests %}
+            <li class="list-group-item d-flex align-items-center" id="" style="background-color: black;">
+              <div class="p-2 flex-grow-1">
+                <h5 style="color:white">{{ test.subjectCode }}</h5>
+              </div>
+          
+              <form class="p-2 ms-2" action="" method="post" name="delete">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Check Status</button>
+              </form>
+            </li>
+            {% endfor %}
+            
+            <div class="row">
+              <div class="col-12 d-flex justify-content-center">
+                  <form action="{%url 'add_test'%}" method="post">
+                      {% csrf_token %}
+                      <button type="submit" class="btn btn-primary">Create Test</button>
+                  </form>
+              </div>
+            </div>
+          </div>
+  </div>
+</div>
 {% endblock content %}
-    

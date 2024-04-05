@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -70,46 +69,30 @@
   
 
 </head>
-<body id="bg" style = "background-color: rgb(72, 167, 211);">
-  <div class="wrapper" >
-    <div style="width: 1326px; height: 700px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); border-radius: 48px;" class="box box1">
-       <nav style="width: 1171px; height: 86px;border-radius: 30px; background-color: #ffffff; opacity: 1;margin:0 auto;margin-top: 33px;" class="navbar navbar-expand-lg navbar-light bg-light box2">
-        <div class="container dark-white-bg rounded p-3">
-          <a class="navbar-brand" href="#"> <img src="{% static 'images/logo.jpg' %}" alt="Icon" class="icon">
-          </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav ms-auto">   
-              <div class="navelmenets" >
-              <li class="nav-item active">
-                <a class="nav-link" href="#" ><h4 class="navtext">Home</h4></a>
-              </li>
-            </div>
-            <div>
-              <li class="nav-item active">
-                <a class="nav-link" href="#"><h4 class="navtext">About</h4></a>
-              </li>
-            </div>
-            <div class="navtext">
-              <li class="nav-item active">
-                <a class="nav-link" href="#"><h4 class="navtext">Instructions</h4></a>
-              </li>
-            </div>
-            </ul>
+<body id="bg" style="background-color: rgb(72, 167, 211);">
+  <div class="wrapper">
+    <div style="width: 1326px; height: 800px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); border-radius: 48px;" class="box box1">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            {% block top_content %}{% endblock top_content %}
           </div>
         </div>
-      </nav>
-      <div style="width: 1171px; margin: 0 auto;">
-        {% block content%} {% endblock content %}
+        <div class="row">
+          <div class="col-6">
+            {% block bottom_left_content %}{% endblock bottom_left_content %}
+          </div>
+          <div class="col-6">
+            {% block bottom_right_content %}{% endblock bottom_right_content %}
+          </div>
+        </div>
       </div>
+    </div>
   </div>
-  </div>
-  
 </body>
 </html>
  
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+

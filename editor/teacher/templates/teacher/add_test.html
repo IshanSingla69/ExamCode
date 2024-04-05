@@ -1,11 +1,23 @@
 {% extends 'base.html' %} 
 {% block content %}
     create test here
+    <div
+        class="container-sm"
+    >
     <form action="{%url 'add_test'%}" method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        {% for field in form %}
+            {{ field.label_tag }}
+            {{ field }}
+            {% if field.errors %}
+            {% endif %}
+            {% endfor %}
         <button type="submit" class="btn btn-primary">Create Test</button>
     </form>
+    </div>
+    
+    
+    
     
 {% endblock content %}
     

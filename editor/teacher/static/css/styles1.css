@@ -1,0 +1,190 @@
+
+/*K2D-------------------------------------------------------------------------------------------- */
+.k2d-thin {
+    font-family: "K2D", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+  }
+  
+  .k2d-extralight {
+    font-family: "K2D", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+  }
+  
+  .k2d-light {
+    font-family: "K2D", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  .k2d-regular {
+    font-family: "K2D", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .k2d-medium {
+    font-family: "K2D", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  .k2d-semibold {
+    font-family: "K2D", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+  }
+  
+  .k2d-bold {
+    font-family: "K2D", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  .k2d-extrabold {
+    font-family: "K2D", sans-serif;
+    font-weight: 800;
+    font-style: normal;
+  }
+  
+  .k2d-thin-italic {
+    font-family: "K2D", sans-serif;
+    font-weight: 100;
+    font-style: italic;
+  }
+  
+  .k2d-extralight-italic {
+    font-family: "K2D", sans-serif;
+    font-weight: 200;
+    font-style: italic;
+  }
+  
+  .k2d-light-italic {
+    font-family: "K2D", sans-serif;
+    font-weight: 300;
+    font-style: italic;
+  }
+  
+  .k2d-regular-italic {
+    font-family: "K2D", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+  }
+  
+  .k2d-medium-italic {
+    font-family: "K2D", sans-serif;
+    font-weight: 500;
+    font-style: italic;
+  }
+  
+  .k2d-semibold-italic {
+    font-family: "K2D", sans-serif;
+    font-weight: 600;
+    font-style: italic;
+  }
+  
+  .k2d-bold-italic {
+    font-family: "K2D", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+  }
+  
+  .k2d-extrabold-italic {
+    font-family: "K2D", sans-serif;
+    font-weight: 800;
+    font-style: italic;
+  }
+  /*K2D-------------------------------------------------------------------------------------------- */
+
+
+h1{
+    font-family: "K2D", sans-serif;
+    font-size: 50px;
+    color: rgb(0, 0, 0);
+    margin: 0; /* Remove margin */
+    position: absolute; /* Position the text */
+    margin-top: 30px;
+    margin-left: 100px;
+}
+
+.container {
+    background-color: #d5b3b3;
+    width: 1171px;
+    height: 669px;
+    border-radius: 78px;
+    margin-top: 20px;
+    position: relative; 
+    backdrop-filter: blur(100px);
+}
+.customLine{
+
+    width: 1073px ;
+    position: absolute;
+    margin-top: 120px;
+    margin-left: 50px;
+    border-width: 2px; 
+    border-style: solid;
+    color: #000000;
+}
+
+#SubjectCode{
+    width: 645px;
+    height: 67px;
+    position: absolute;
+    margin-top: 300px;
+    margin-left: 220px;
+    background-color: #ffffff;
+    font-size: 50px;
+    font-weight: 300px;
+    
+}
+p{
+    font-family: "K2D", sans-serif;
+    position: absolute;
+    color: #000000;
+    margin-top: 180px;
+    margin-left: 100px;
+    font-size: 40px;
+    font-weight: 200;
+}
+#createTest{
+    font-family: "K2D", sans-serif;
+    margin-top: 400px;
+    margin-left: 300px;
+    position: absolute;
+    font-size: 20px;
+    width: 246px;
+    height: 34px;
+    text-align: center;
+
+}
+.TestInfo{
+margin-top: 260px;
+margin-left: 100px;
+position: absolute;
+font-family: "K2D";
+width: 602px;
+height: 51px;
+background-color: aqua;
+padding-left: 20px;
+padding-top: 20px;
+font-size: 20px;
+
+}
+.status{
+    position: relative;
+    bottom: 25px;
+    left: 450px;
+}
+#checkstatus{
+    
+    background-color: rgb(255, 255, 255);
+    width: 246px;
+    height: 34px;
+    text-align: center;
+    font-family: "K2D";
+    position: relative;
+    right: 120px;
+    font-weight: bold;
+}
