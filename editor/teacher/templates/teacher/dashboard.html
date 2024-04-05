@@ -1,0 +1,13 @@
+{% extends 'base.html' %} 
+{% block content %}
+
+    
+    
+        
+
+    <form action="{%url 'add_test'%}" method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary">Create Test</button>
+    </form>
+{% endblock content %}
+    
