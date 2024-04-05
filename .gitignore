@@ -9,5 +9,6 @@
 [Ss]cripts
 pyvenv.cfg
 .venv
+.vscode
 db.sqlite3
 pip-selfcheck.json
