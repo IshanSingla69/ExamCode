@@ -1,4 +1,4 @@
-
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,13 +54,18 @@
       justify-content: center;
     }
     
+    .body{
+      background-image: url('{%static "images/web_bg.jpg"%}'); 
+      background-size: cover;
+    }
+
   </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
 </head>
-<body style="background-image: url('skies.jpg'); background-size: cover;">
-
+<body>
+  
   <div class="wrapper">
     <div style="width: 1326px; height: 800px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); border-radius: 48px;" class="box box1">
        <nav style="width: 1171px; height: 86px;border-radius: 30px; background-color: #ffffff; opacity: 1;margin:0 auto;margin-top: 33px;" class="navbar navbar-expand-lg navbar-light bg-light box2">
