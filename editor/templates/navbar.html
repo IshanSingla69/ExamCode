@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block navbar %}
+<nav style="width: 1171px; height: 86px;border-radius: 30px; background-color: #ffffff; opacity: 1;margin:0 auto;margin-top: 33px;" class="navbar navbar-expand-lg navbar-light bg-light box2">
+    <div class="container dark-white-bg rounded p-3">
+    <div class="navbar-brand" style="font-family: 'Inter', sans-serif !important; font-weight: bold; font-size: 34px;padding-left: 20px; " >ExamIn</div>
+    
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ms-auto">   
+          <div class="navtext">
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'authentication:login' %}" style="margin-left: auto;">Home</a>
+            </li>
+          </div>
+        <div class="navtext">
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'authentication:about' %}" style="margin-left: auto;">About</a>
+          </li>
+        </div>
+        <div class="navtext">
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'authentication:instructions' %}" style="margin-left: auto;">Instructions</a>
+          </li>
+        </div>
+        <div class="navtext">
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'authentication:logout' %}" style="margin-left: auto;">Logout</a>
+          </li>
+        </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+  {% block content_nav %}
+    
+  {% endblock content_nav %}
+    
+{% endblock navbar %}
+    

@@ -1,23 +1,38 @@
 {% extends 'base.html' %} 
 {% block content %}
-    create test here
-    <div
-        class="container-sm"
-    >
-    <form action="{%url 'teacher:add_question'%}" method="post">
-        {% csrf_token %}
-        {% for field in form %}
-            {{ field.label_tag }}
-            {{ field }}
-            {% if field.errors %}
-            {% endif %}
-            {% endfor %}
-        <button type="submit" class="btn btn-primary">Create Test</button>
-    </form>
+<h2>Create Test</h2>
+<button type="button" class="btn btn-primary" id="createTestBtn">Create Test</button>
+
+<div class="modal fade" id="createTestModal" tabindex="-1" role="dialog" aria-labelledby="createTestModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createTestModalLabel">Create Test</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="{% url 'teacher:create_test' %}">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
     </div>
-    
-    
-    
-    
+</div>
+
+<!-- Include jQuery and Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $("#createTestBtn").click(function(){
+            $("#createTestModal").modal('show');
+        });
+    });
+</script>
 {% endblock content %}
     
