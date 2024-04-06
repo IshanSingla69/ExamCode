@@ -1,69 +1,139 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+{% extends 'base.html' %}
+
+{% block content %}
 <style>
-    .timer {
-      font-size: 20px ;
-      color: white;
-      background-color: #007bff;
-      padding: 5px;
-      border-radius: 5px;
-    }
-    .container-border {
-      border: 1px solid #ddd;
-      border-radius: 4px;
-    }
-    body {
-      background-image: url('https://c4.wallpaperflare.com/wallpaper/285/172/9/sunset-8k-forest-4k-wallpaper-preview.jpg');
-      background-size: cover;
-    }
+body {
+  background-image: url("https://c4.wallpaperflare.com/wallpaper/285/172/9/sunset-8k-forest-4k-wallpaper-preview.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  
+}
 
-    .upper{
-      width: 1026px;
-      height: 60px;
-      border-radius: 21px;
-    }
-    .lower{
-      display: flex;
-    }
-    .left{
+.MainBox {
+  background-color: rgba(255, 255, 255, 0.9); 
+  width: 1200px; 
+  
+  height: 936px; 
+  border-radius: 20px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  backdrop-filter: blur(300px); 
+  display: flex;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
 
-    }
-    .right{
 
-    }
-    .lower-left{
+.QuestionBar {
+  display: flex;
+  width: 1020px;
+  height: 60px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 20px;
+  margin: 10px;
+  font-family: "F2D", sans-serif;
+  position: absolute;
+  top: 10px;
+  left: 30px; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
 
-    }
-    .upper-left{
 
-    }
-    .upper-right{
+.QuestionBarElements {
+  background-color: rgb(255, 255, 255);
+  height: 60px;
+  width: 125px;
+  text-align: center;
+  line-height: 60px;
+  font-family: "F2D", sans-serif;
+  border: 0px;
+  font-weight: 600;
+  
+}
 
-    }
-  </style>
+#Element1 {
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  background-color: rgb(255, 255, 255);
+  
+}
+.Beside{
+  background-color: rgb(255, 255, 255);
+  height: 60px;
+  width: 250px;
+  text-align: center;
+  line-height: 60px;
+  font-family: "F2D", sans-serif;
+  border: 0px;
+  position: absolute;
+  top: 10px; 
+  left: 1066px; 
+  margin: 10px auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  
+}
+#Submit{
+  border-radius: 20px;
+  left: 1080px;
+  position: absolute;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  background-color: red;
+  font-weight: 600;
+
+}
+
+
+#QuestionNum{
+  position: absolute;
+  background-color: rgb(255, 255, 255);
+  left: 30px;
+  width: 400px;
+  height: 600px;
+  border-radius: 20px;
+  margin: 10px;
+  text-align: left;
+  top: 88px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  
+}
+
+#AnswerBox{
+  position: absolute;
+  background-color: rgb(255, 255, 255);
+  left: 450px;
+  width: 866px;
+  height: 600px;
+  border-radius: 20px;
+  margin: 10px;
+  text-align: left;
+  top: 88px;
+  text-align: center;
+  border: 0px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+</style>
 <body>
-    <div class="upper">
-        <div class="upper-right">
+    <div class="MainBox">
+    <div class="QuestionBar">
+        <div class="QuestionBarElements" id="Element1">Questions</div>
+        <button class="QuestionBarElements" id="Element2">Q1</button>
+        <button class="QuestionBarElements" id="Element3">Q2</button>
+        <button class="QuestionBarElements" id="Element4">Q3</button>
+        <button class="QuestionBarElements" id="Element4">-----></button>
 
-        </div>
+
     </div>
-    <div class="lower">
-        <div class="left">
-            <div class="upper-left">
-
-            </div>
-            <div class="lower-left">
-
-            </div>
-        </div>
-        <div class="right">
-
-        </div>
-    </div>
-</body>
-</html>
+    
+    <button class="Beside" id="Submit">Submit</button>
+    <div id="QuestionNum">Question Number</div>
+    <div id="Output">Output</div>
+    <input type="text" placeholder="Enter Answer" class="Answer" id="AnswerBox">
+button
+</div>
+{% endblock content %}

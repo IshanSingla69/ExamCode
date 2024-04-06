@@ -28,9 +28,7 @@ def login(request):
         else:
             messages.error(request, 'Invalid credentials')
             return redirect('authentication:home')
-    else:
-        form = LoginForm()
-    return render(request, 'auth/login.html', {'form': form})
+    return render(request, 'auth/login.html')
 
 def logout(request):
     auth_logout(request)

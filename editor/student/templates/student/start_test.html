@@ -25,11 +25,23 @@
     align-items: center;
 }
 
+#out {
+    width: 1171px;
+    height: 520px;
+    border-radius: 78px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto; /* Center horizontally */
+    margin-top: 50px; /* Adjust top margin as needed */
+}
+
 </style>
-<div style="height: 50px;"></div>
-<div style="width: 1171px; height: 520px; border-radius: 78px; background-color: white;">
+<div id="out">
   <div style="width: 667px; height: 150px; text-align: center; display: flex;">
-      <div style="width: 50px;"></div>    
+      <div style="width: 60px;"></div>    
       <div style="display: flex; width: auto;">
       <p class="welcomeuser">Welcome&nbsp;</p><p class="welcomeuser" style="font-weight: bold;">{{ name }},</p>
   </div>
@@ -38,22 +50,19 @@
   <div class="line"></div> 
   <div class="welcomeuser" style="font-size: 32px;font-weight: 200;">Enter the Code</div>
   <div class="form-container">
-    <form class="row row-cols-lg-auto g-3 align-items-center" action = "{%url 'student:test'%}">
+    <form class="row row-cols-lg-auto g-3 align-items-center" action="{% url 'student:test' %}">
         <div class="col-12">
-          <label class="visually-hidden" for="inlineFormInputGroupUsername">Username</label>
+          <label class="visually-hidden" for="inlineFormInputGroupUsername">Test Code</label>
           <div class="input-group">
             <div class="input-group-text"></div>
-            <input type="text" class="form-control" name="code" id="inlineFormInputGroupUsername" placeholder="Username">
+            <input type="text" class="form-control" name="code" id="inlineFormInputGroupUsername" placeholder="Test Code">
           </div>
         </div>
         <div class="col-12">
           <button type="submit" class="btn btn-primary">Submit</button>
         </div>
       </form>
-   
-
 </div>
-
 </div>
 
 {% endblock content_nav %}

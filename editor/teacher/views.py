@@ -4,9 +4,7 @@ from django.contrib import messages
 from .models import Test, Question
 from .forms import Test_Form
 def index(request):
-    tests = Test.objects.all()
-    test_codes = [test.subject_Code for test in tests]
-    return render(request, 'teacher/add_test.html', {'tests': test_codes})
+    return render(request, 'teacher/add_test.html', )
 
 # def add_test(request):
 #     if request.method == 'POST':
