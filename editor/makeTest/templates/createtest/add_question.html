@@ -1,0 +1,37 @@
+<!-- add_question.html -->
+{% extends 'base.html' %}
+{% block content %}
+<div style="display: flex; flex-direction: row; gap: 10px;">
+    <!-- Loop through all questions -->
+    {% if all_questions %}
+        {% for question in all_questions %}
+            <form method="get" action="{% url 'add_question' test_id=question.test.id q_id=question.id %}">
+                <button type="submit" class="btn btn-primary">Question {{ forloop.counter }}</button>
+            </form>
+        {% endfor %}
+    {% endif %}
+</div>
+<h2>Add Question</h2>
+<form method="post" action="{% url 'add_question' test_id=test.id q_id=question.id %}">
+    {% csrf_token %}
+    <input type="hidden" name="question_id" value="{{ question.id }}">
+    <div class="form-group">
+      <textarea name="question_text" class="form-control" id="exampleFormControlTextarea1" rows="3">{{ question.question_text }}</textarea>
+    </div>
+    <div class="form-group">
+        <label for="maxMarks">Maximum Marks</label>
+        <input type="number" class="form-control" id="maxMarks" name="max_marks" value="{{ question.max_marks }}">
+    </div>
+    <button type="submit" class="btn btn-primary">Save Question</button>
+</form>
+<form method="post" action="{% url 'new_question' test_id=test.id%}">
+    {% csrf_token %}
+    <input type="hidden" name="new_question">
+    <button type="submit" class="btn btn-primary">Add New Question</button>
+</form>
+
+<form method="post" action="{% url 'create_test'%}">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-primary">Finish Adding Questions</button>
+</form>
+{% endblock %}

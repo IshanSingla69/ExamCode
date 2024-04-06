@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'student',
     'teacher',
     'authentication',
+    'makeTest',
 ]
 
 MIDDLEWARE = [
