@@ -1,0 +1,63 @@
+<!-- create_test.html -->
+{% extends 'navbar.html' %}
+
+{% block content_nav %}
+<div class="container" style="margin: 50px;">  <!-- Add this line -->
+    <h2>Create Test</h2>
+    <button type="button" class="btn btn-primary" id="createTestBtn">Create Test</button>
+
+    <style>
+        .card-container {
+            max-height: 400px;
+            max-width: 1200px; /* Adjust this value based on the height of six cards */
+            overflow-y: auto;
+        }
+    </style>
+
+    <div class="row card-container" style = "color: black;">
+        {% for test in tests %}
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ test.name }}</h5>
+                        <p class="card-text">Subject: {{ test.subject }}</p>
+                        <p class="card-text">Total Marks: {{ test.total_marks }}</p>
+                        <p class="card-text">Exam Code: {{ test.exam_code }}</p> 
+                        <a href="{% url 'view_question' test_id=test.id%}" class="btn btn-primary">Go to Test</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>  <!-- Add this line -->
+{% endblock %}
+
+{% block modal %}
+<div class="modal fade" id="createTestModal" tabindex="-1" role="dialog" aria-labelledby="createTestModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document" style = "z-index: 1050;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createTestModalLabel">Create Test</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="{% url 'create_test' %}">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Include Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-beta1/js/bootstrap.bundle.min.js"></script>
+<script>
+    document.getElementById('createTestBtn').addEventListener('click', function() {
+        var myModal = new bootstrap.Modal(document.getElementById('createTestModal'), {});
+        myModal.show();
+    });
+</script>
+{% endblock %}
