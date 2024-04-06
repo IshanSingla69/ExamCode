@@ -13,8 +13,13 @@ def add_test(request):
         form = Test_Form(request.POST)
         if form.is_valid():
             form.save()
+            exam_code = genExamCode()
+            test = Test.objects.latest('id')
+            test.examcode = exam_code
+            test.save()
+            
             messages.success(request, 'Test created successfully')
-            return redirect('add_question')
+            return redirect('teacher:add_question')
         else:
             print(form.errors)
     else:
@@ -24,3 +29,8 @@ def add_test(request):
 def add_question(request):
     
     return render(request, 'teacher/add_questions.html')
+
+def genExamCode():
+    import random
+    import string
+    return ''.join(random.choices(string.ascii_uppercase + string.digits, k=6))

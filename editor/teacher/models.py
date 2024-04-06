@@ -7,6 +7,7 @@ class Test(models.Model):
     subjectCode = models.CharField(max_length=100)
     timeDuration = models.DurationField()
     totalMarks = models.IntegerField()
+    examcode = models.CharField(max_length=100, default='123AB', blank=False)
         
     def __str__(self):
         return self.name

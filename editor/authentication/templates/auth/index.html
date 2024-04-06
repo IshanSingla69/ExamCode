@@ -13,18 +13,18 @@
 {% endfor %} {% if user.is_authenticated %}
 
 <h1>{{name}}</h1>
-<form action="{%url 'logout'%}" method="post">
+<form action="{%url 'authentication:logout'%}" method="post">
   {% csrf_token %}
   <button type="submit" class="btn btn-primary">Logout</button>
 </form>
 
 {% else %}
 <div class="container">
-  <form action="{%url 'login'%}" method="post">
+  <form action="{%url 'authentication:login'%}" method="post">
     {% csrf_token %}
     <button type="submit" class="btn btn-primary">Login</button>
   </form>
-  <form action="{%url 'register'%}" method="post">
+  <form action="{%url 'authentication:register'%}" method="post">
     {% csrf_token %}
     <button type="submit" class="btn btn-secondary">Sign Up</button>
   </form>

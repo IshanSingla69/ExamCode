@@ -9,7 +9,12 @@
   {% endfor %}
 </ul>
 {% endif %} 
-
+<div class="d-flex justify-content-end w-100">
+  <form action="{% url 'authentication:logout' %}" method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Logout</button>
+  </form>
+</div>
 <div class="card mt-5 mb-5" style="border-radius: 25px; color:black">
   <div class="card-body">
     <div class="container">
@@ -31,7 +36,7 @@
             
             <div class="row">
               <div class="col-12 d-flex justify-content-center">
-                  <form action="{%url 'add_test'%}" method="post">
+                  <form action="{%url 'teacher:add_test'%}" method="post">
                       {% csrf_token %}
                       <button type="submit" class="btn btn-primary">Create Test</button>
                   </form>

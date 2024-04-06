@@ -6,6 +6,7 @@ class SignUpForm(forms.Form):
     rollnumber = forms.IntegerField(widget=forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Roll Number'}))
     pass1 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Password'}))
     pass2 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Confirm Password'}))
+    account_type = forms.ChoiceField(choices=[('student', 'Student'), ('teacher', 'Teacher')], widget=forms.Select(attrs={'class': 'form-control'}))
 
     def clean(self):
         cleaned_data = super().clean()
