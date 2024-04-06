@@ -23,16 +23,12 @@
                 <h5 style="color:white">{{ test.subject_Code }}</h5>
               </div>
           
-              <form class="p-2 ms-2" action="{%url 'teacher:SubjectInfo'%}" method="post" name="delete">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-danger">Check Status</button>
-              </form>
-            </li>
+              
             {% endfor %}
             
             <div class="row">
               <div class="col-12 d-flex justify-content-center">
-                  <form action="{%url 'teacher:add_test'%}" method="post">
+                  <form action="{%url 'teacher:create_test'%}" method="post">
                       {% csrf_token %}
                       <button type="submit" class="btn btn-primary">Create Test</button>
                   </form>

@@ -76,16 +76,19 @@ body {
 }
 
 </style>
-<div class="MainBox">
+<!-- <div class="MainBox">
   <div class="Runs">Max Runs</div>
   <div class="subjectcode">UES103</div>
   <button id="submit">Submit</button>
   <div class="questionbar">
       <div class="navbar">Question</div>
       <button class="navbar" id="q1">Q1</button>
+      <button class="navbar" id="q1">Q1</button>
+      
       <button class="navbar" id="plus">+</button>
-      <div class="navbar" id="mm">MM - </div>
   </div>
+  <div class="navbar" id="mm">MM - </div>
+
  
   <input type="text" placeholder="Enter question" class="questionbar" id="inputbox">
   <div class="questionbar" id="qnum">Question Number 1</div>
@@ -93,5 +96,31 @@ body {
   <div class="questionbar" id="qoutput"> Output</div>
 
 
+</div> -->
+
+<div style="display: flex; flex-direction: row; gap: 10px;">
+  <!-- Loop through all questions -->
+  {% if all_questions %}
+      {% for question in all_questions %}
+          <form method="get" action="{% url 'add_question' test_id=question.test.id q_id=question.id %}">
+              <button type="submit" class="btn btn-primary">Question {{ forloop.counter }}</button>
+          </form>
+      {% endfor %}
+  {% endif %}
 </div>
+<h2>Add Question</h2>
+<form method="post" action="{% url 'add_question' test_id=test.id q_id=question.id %}">
+  {% csrf_token %}
+  <input type="hidden" name="question_id" value="{{ question.id }}">
+  <div class="form-group">
+    <textarea name="question_text" class="form-control" id="exampleFormControlTextarea1" rows="3">{{ question.question_text }}</textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Save Question</button>
+</form>
+<form method="post" action="{% url 'new_question' test_id=test.id%}">
+  {% csrf_token %}
+  <input type="hidden" name="new_question">
+  <button type="submit" class="btn btn-primary">Add New Question</button>
+</form>
+
 {% endblock content %}

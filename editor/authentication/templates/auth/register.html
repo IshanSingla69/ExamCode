@@ -1,9 +1,9 @@
-{% extends 'base.html' %}
+{% extends 'navbar.html' %}
 
-{% block content %}
+{% block content_nav %}
 <form action="{% url 'authentication:register' %}" method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
-{% endblock content %}
+{% endblock content_nav %}
