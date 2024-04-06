@@ -41,7 +41,7 @@ def add_question(request, test_id, q_id=None):
         else:
             current_question = get_object_or_404(Question, pk=q_id)
         all_questions = Question.objects.filter(test=test)
-        return render(request, 'createtest/add_question.html', {'test': test, 'question': current_question, 'all_questions': all_questions})
+        return render(request, 'createtest/add_question.html', {'test': test, 'question': current_question, 'all_questions': all_questions, 'current_question': current_question})
 
 def view_question(request, test_id):
     test = get_object_or_404(Test, pk=test_id)
@@ -53,3 +53,30 @@ def new_question(request, test_id):
     test = get_object_or_404(Test, pk=test_id)
     new_question = Question.objects.create(test=test, question_text="", max_marks=1)
     return redirect('makeTest:add_question', test_id=test.pk, q_id=new_question.pk)
+
+def delete_test(request, test_id):
+    if request.method == 'POST':
+        test = get_object_or_404(Test, pk=test_id)
+        test.question_set.all().delete()  # Delete all questions related to the test
+        print(test.question_set.all())
+        test.delete()
+    return redirect('makeTest:create_test')
+
+def delete_question(request, test_id, q_id):
+    if request.method == 'POST':
+        question = get_object_or_404(Question, pk=q_id)
+        test = get_object_or_404(Test, pk=test_id)
+        question.delete()
+        # Get the previous question
+        previous_question = Question.objects.filter(test_id=test_id, id__lt=q_id).order_by('-id').first()
+        if previous_question is not None:
+            return redirect('makeTest:add_question', test_id=test_id, q_id=previous_question.id)
+        else:
+            # If there is no previous question, get the next question
+            next_question = Question.objects.filter(test_id=test_id, id__gt=q_id).order_by('id').first()
+            if next_question is not None:
+                return redirect('makeTest:add_question', test_id=test_id, q_id=next_question.id)
+            else:
+                # If there is no next question, redirect to the test
+                test.delete()
+                return redirect('makeTest:create_test')

@@ -6,7 +6,7 @@
     {% if all_questions %}
         {% for question in all_questions %}
             <form method="get" action="{% url 'makeTest:add_question' test_id=question.test.id q_id=question.id %}">
-                <button type="submit" class="btn btn-primary">Question {{ forloop.counter }}</button>
+                <button type="submit" class="btn {% if question.id == current_question.id %}btn-success{% else %}btn-primary{% endif %}">Question {{ forloop.counter }}</button>
             </form>
         {% endfor %}
     {% endif %}
@@ -33,5 +33,10 @@
 <form method="post" action="{% url 'makeTest:create_test'%}">
     {% csrf_token %}
     <button type="submit" class="btn btn-primary">Finish Adding Questions</button>
+</form>
+
+<form method="post" action="{% url 'makeTest:delete_question' test_id=question.test.id q_id=question.id %}">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Delete question</button>
 </form>
 {% endblock %}
