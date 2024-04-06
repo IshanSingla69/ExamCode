@@ -12,7 +12,7 @@ def login(request):
         if request.user.account_type == 'student':
             return redirect('student:student_dashboard')
         elif request.user.account_type == 'teacher':
-            return redirect('teacher:teacher_dashboard')
+            return redirect('makeTest:create_test')
     if request.method == 'POST':
         username=request.POST.get('username')
         password=request.POST.get('password')
@@ -23,7 +23,7 @@ def login(request):
             if user.account_type == 'student':
                 return redirect('student:student_dashboard')
             elif user.account_type == 'teacher':
-                return redirect('teacher:teacher_dashboard')
+                return redirect('makeTest:create_test')
             return redirect('authentication:home')
         else:
             messages.error(request, 'Invalid credentials')

@@ -9,7 +9,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="post" action="{% url 'create_test' %}">
+                <form method="post" action="{% url 'makeTest:create_test' %}">
                     {% csrf_token %}
                     {{ form.as_p }}
                     <button type="submit" class="btn btn-primary">Submit</button>

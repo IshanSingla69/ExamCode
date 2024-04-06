@@ -23,7 +23,7 @@
                         <p class="card-text">Subject: {{ test.subject }}</p>
                         <p class="card-text">Total Marks: {{ test.total_marks }}</p>
                         <p class="card-text">Exam Code: {{ test.exam_code }}</p> 
-                        <a href="{% url 'view_question' test_id=test.id%}" class="btn btn-primary">Go to Test</a>
+                        <a href="{% url 'makeTest:view_question' test_id=test.id%}" class="btn btn-primary">Go to Test</a>
                     </div>
                 </div>
             </div>
@@ -43,7 +43,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="post" action="{% url 'create_test' %}">
+                <form method="post" action="{% url 'makeTest:create_test' %}">
                     {% csrf_token %}
                     {{ form.as_p }}
                     <button type="submit" class="btn btn-primary">Submit</button>

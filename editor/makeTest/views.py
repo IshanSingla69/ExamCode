@@ -18,7 +18,7 @@ def create_test(request):
             test.exam_code = generate_unique_exam_code()
             test.save()
             question = Question.objects.create(test=test, question_text="", max_marks=1)
-            return redirect('add_question', test_id=test.pk, q_id=question.pk)
+            return redirect('makeTest:add_question', test_id=test.pk, q_id=question.pk)
     else:
         form = TestForm()
     tests = Test.objects.all()
@@ -34,7 +34,7 @@ def add_question(request, test_id, q_id=None):
             current_question.question_text = question_text
             current_question.max_marks = max_marks
             current_question.save()
-        return redirect('add_question', test_id=test.pk, q_id=q_id)
+        return redirect('makeTest:add_question', test_id=test.pk, q_id=q_id)
     else:
         if q_id is None:
             current_question = Question.objects.create(test=test, question_text="", max_marks=1)
@@ -52,4 +52,4 @@ def view_question(request, test_id):
 def new_question(request, test_id):
     test = get_object_or_404(Test, pk=test_id)
     new_question = Question.objects.create(test=test, question_text="", max_marks=1)
-    return redirect('add_question', test_id=test.pk, q_id=new_question.pk)
+    return redirect('makeTest:add_question', test_id=test.pk, q_id=new_question.pk)
