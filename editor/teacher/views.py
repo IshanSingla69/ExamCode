@@ -26,20 +26,8 @@ def add_test(request):
         form = Test_Form()
     return render(request, 'teacher/add_test.html', {'form': form, 'success': False})
 
-def add_question(request, test_id, ques_id):
-    test = Test.objects.get(pk=test_id)
-    if request.method == 'POST':
-        form = QuestionForm(request.POST)
-        if form.is_valid():
-            question = form.save(commit=False)
-            question.test = test
-            question.save()
-            # Redirect to the next question page
-            next_ques_id = ques_id + 1
-            return redirect('add_question', test_id=test_id, ques_id=next_ques_id)
-    else:
-        form = QuestionForm()
-    return render(request, 'teacher/add_questions.html', {'form': form, 'test_id': test_id, 'ques_id': ques_id})
+def add_question(request):
+    return render(request,'teacher/create_questions.html')
 
 def QuestionCreation(request):
     return render(request, 'teacher/QuestionCreationWindow.html')
