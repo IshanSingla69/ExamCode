@@ -1,122 +1,131 @@
-{% extends 'base.html' %}
-
-{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+    <link rel="stylesheet" href="testappear.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+</head>
 <style>
-body {
-  background-image: url("https://c4.wallpaperflare.com/wallpaper/285/172/9/sunset-8k-forest-4k-wallpaper-preview.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  display: flex;
-  justify-content: center; 
-  align-items: center; 
-  
+    body {
+    background-image: url("https://c4.wallpaperflare.com/wallpaper/285/172/9/sunset-8k-forest-4k-wallpaper-preview.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    
 }
 
 .MainBox {
-  background-color: rgba(255, 255, 255, 0.9); 
-  width: 1200px; 
-  
-  height: 936px; 
-  border-radius: 20px; 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  backdrop-filter: blur(300px); 
-  display: flex;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    background-color: rgba(255, 255, 255, 0.9); 
+    width: 90%; 
+    max-width: 1390px; 
+    height: 936px; 
+    border-radius: 20px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    backdrop-filter: blur(300px); 
+    display: flex;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 
 .QuestionBar {
-  display: flex;
-  width: 1020px;
-  height: 60px;
-  background-color: rgb(255, 255, 255);
-  border-radius: 20px;
-  margin: 10px;
-  font-family: "F2D", sans-serif;
-  position: absolute;
-  top: 10px;
-  left: 30px; 
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    width: 1020px;
+    height: 60px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    margin: 10px;
+    font-family: "F2D", sans-serif;
+    position: absolute;
+    top: 10px;
+    left: 30px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 
 .QuestionBarElements {
-  background-color: rgb(255, 255, 255);
-  height: 60px;
-  width: 125px;
-  text-align: center;
-  line-height: 60px;
-  font-family: "F2D", sans-serif;
-  border: 0px;
-  font-weight: 600;
-  
+    background-color: rgb(255, 255, 255);
+    height: 60px;
+    width: 125px;
+    text-align: center;
+    line-height: 60px;
+    font-family: "F2D", sans-serif;
+    border: 0px;
+    font-weight: 600;
+    
 }
 
 #Element1 {
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
-  background-color: rgb(255, 255, 255);
-  
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    background-color: rgb(255, 255, 255);
+    
 }
 .Beside{
-  background-color: rgb(255, 255, 255);
-  height: 60px;
-  width: 250px;
-  text-align: center;
-  line-height: 60px;
-  font-family: "F2D", sans-serif;
-  border: 0px;
-  position: absolute;
-  top: 10px; 
-  left: 1066px; 
-  margin: 10px auto;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  
+    background-color: rgb(255, 255, 255);
+    height: 60px;
+    width: 250px;
+    text-align: center;
+    line-height: 60px;
+    font-family: "F2D", sans-serif;
+    border: 0px;
+    position: absolute;
+    top: 10px; 
+    left: 1066px; 
+    margin: 10px auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    
 }
 #Submit{
-  border-radius: 20px;
-  left: 1080px;
-  position: absolute;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  background-color: red;
-  font-weight: 600;
+    border-radius: 20px;
+    left: 1080px;
+    position: absolute;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    background-color: red;
+    font-weight: 600;
 
 }
 
 
 #QuestionNum{
-  position: absolute;
-  background-color: rgb(255, 255, 255);
-  left: 30px;
-  width: 400px;
-  height: 600px;
-  border-radius: 20px;
-  margin: 10px;
-  text-align: left;
-  top: 88px;
-  text-align: center;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+    left: 30px;
+    width: 400px;
+    height: 600px;
+    border-radius: 20px;
+    margin: 10px;
+    text-align: left;
+    top: 88px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    
 }
 
 #AnswerBox{
-  position: absolute;
-  background-color: rgb(255, 255, 255);
-  left: 450px;
-  width: 866px;
-  height: 600px;
-  border-radius: 20px;
-  margin: 10px;
-  text-align: left;
-  top: 88px;
-  text-align: center;
-  border: 0px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+    left: 450px;
+    width: 866px;
+    height: 600px;
+    border-radius: 20px;
+    margin: 10px;
+    text-align: left;
+    top: 88px;
+    text-align: center;
+    border: 0px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
+
 </style>
 <body>
     <div class="MainBox">
@@ -136,4 +145,5 @@ body {
     <input type="text" placeholder="Enter Answer" class="Answer" id="AnswerBox">
 button
 </div>
-{% endblock content %}
+</body>
+</html>
