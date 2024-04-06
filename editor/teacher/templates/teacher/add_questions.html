@@ -1,175 +1,81 @@
-{% extends 'base.html' %}
-{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
 <style>
-  body {
+body {
   background-image: url("https://c4.wallpaperflare.com/wallpaper/285/172/9/sunset-8k-forest-4k-wallpaper-preview.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   display: flex;
-  justify-content: center; 
-  align-items: center; 
-  
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
 }
 
 .MainBox {
-  background-color: rgba(255, 255, 255, 0.9); 
-  width: 90%; 
-  max-width: 1390px; 
-  height: 936px; 
-  border-radius: 20px; 
+  background-color: rgba(255, 255, 255, 0.9);
+  width: 90%;
+  max-width: 90vw;
+  height: 80vh;
+  border-radius: 20px;
   display: flex;
+  flex-direction: row; /* Make items horizontal */
+  flex-wrap: wrap; /* Wrap items to next line if needed */
   justify-content: center;
   align-items: center;
   position: relative;
-  backdrop-filter: blur(300px); 
-  display: flex;
+  backdrop-filter: blur(300px);
 }
 
-.Runs {
-  position: absolute;
-  top: 50px;
-  left: 10vh; 
+.Runs, .subjectcode, #submit, .questionbar, .navbar {
   background-color: rgb(255, 255, 255);
   font-family: 'K2D', sans-serif;
   border-radius: 20px;
-  width: 303px;
-  height: 58px;
-  text-align: center; 
+  width: 30%;
+  max-width: 30vw;
+  height: 10%;
+  max-height: 10vh;
+  text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
   font-weight: bold;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  margin: 10px; /* Add spacing between items */
 }
 
-.subjectcode {
-  position: absolute;
-  top: 50px;
-  left: 525px; 
-  background-color: rgb(255, 255, 255);
-  font-family: 'K2D', sans-serif;
-  border-radius: 20px;
-  width: 303px;
-  height: 58px;
-  text-align: center; 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: bold;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
 #submit {
-  position: absolute;
-  top: 50px;
-  left: 1000px; 
-  background-color: rgb(255, 255, 255);
-  font-family: 'K2D', sans-serif;
-  border-radius: 20px;
-  width: 303px;
-  height: 58px;
-  text-align: center; 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: bold;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  border: 0px;
   background-color: red;
 }
-.questionbar {
-  position: absolute;
-  top: 170px;
-  left: 10vh;
-  background-color: rgb(255, 255, 255);
-  font-family: 'K2D', sans-serif;
-  border-radius: 20px;
-  width: 750px;
-  height: 58px;
-  text-align: center; 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: bold;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
-.navbar{
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: rgb(255, 255, 255);
-  font-family: 'K2D', sans-serif;
-  border-radius: 20px;
-  width: 125px;
-  height: 58px;
-  text-align: center; 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: bold;
-  
-}
-#q1{
-  left: 17%;
-  border: 0px;
-  
-}
-#plus{
-  left: 33.9%;
-  border: 0px;
-}
-#inputbox{
+
+#inputbox, #outputbox {
   background-color: #ffffff;
-  height: 600px;
-  top: 36vh;
+  height: 50%;
+  max-height: 50vh;
+  width: 50%;
+  max-width: 50vw;
   text-align: left;
-  border: 0px;
-  
 }
-#qnum {
-  position: absolute;
-  width: 330px;
-  bottom: 0;
-  top: 40vh;
-  left: 290px;
+
+#qnum, #qoutput {
   background-color: rgb(255, 255, 255);
   font-weight: 900;
-  font-size: 25px;
+  font-size: 2em;
   white-space: nowrap;
-
-}
-#outputbox {
-  background-color: #ffffff;
-  height: 600px;
-  width: 330px;
-  top: 36vh;
-  text-align: left;
-  border: 0px;
-  left: 980px; 
-}
-#qoutput{
-  position: absolute;
-  width: 250px;
-  bottom: 0;
-  top: 40vh;
-  left: 1025px;
-  background-color: rgb(255, 255, 255);
-  font-weight: 900;
-  font-size: 25px;
-  white-space: nowrap;
-
-}
-#mm{
-  left: 1100px;
 }
 
-
-
+#qnum, #qoutput, .navbar {
+  width: auto;
+  height: auto;
+}
 
 </style>
-
-
-
 <div class="MainBox">
   <div class="Runs">Max Runs</div>
   <div class="subjectcode">UES103</div>
@@ -188,19 +94,6 @@
   <div class="questionbar" id="qnum">Question Number 1</div>
   <input type="text" placeholder="Enter output" class="questionbar" id="outputbox">
   <div class="questionbar" id="qoutput"> Output</div>
-  
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 </div>
