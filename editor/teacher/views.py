@@ -3,10 +3,11 @@ from django.http import HttpResponse
 from django.contrib import messages
 from .models import Test, Question
 from .forms import Test_Form, QuestionForm
+
+
 def index(request):
     tests = Test.objects.all()
-    test_codes = [test.subject_Code for test in tests]
-    return render(request, 'teacher/dashboard.html', {'tests': test_codes})
+    return render(request, 'teacher/dashboard.html', {'subject_codes': tests})
 
 def add_test(request):
     if request.method == 'POST':

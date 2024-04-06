@@ -14,21 +14,20 @@ def login(request):
         elif request.user.account_type == 'teacher':
             return redirect('teacher:teacher_dashboard')
     if request.method == 'POST':
-        form = LoginForm(request.POST)
-        if form.is_valid():
-            user = authenticate(request, username=form.cleaned_data['rollnumber'], password=form.cleaned_data['password'])
-            if user is not None:
-                auth_login(request, user)
-                # messages.success(request, 'Login successful')
-                request.session['name'] = user.first_name
-                if user.account_type == 'student':
-                    return redirect('student:student_dashboard')
-                elif user.account_type == 'teacher':
-                    return redirect('teacher:teacher_dashboard')
-                return redirect('authentication:home')
-            else:
-                messages.error(request, 'Invalid credentials')
-                return redirect('authentication:home')
+        username=request.POST.get('username')
+        password=request.POST.get('password')
+        user = authenticate(request=request,username=username,password=password)
+        if user is not None:
+            auth_login(request, user)
+            request.session['name'] = user.first_name
+            if user.account_type == 'student':
+                return redirect('student:student_dashboard')
+            elif user.account_type == 'teacher':
+                return redirect('teacher:teacher_dashboard')
+            return redirect('authentication:home')
+        else:
+            messages.error(request, 'Invalid credentials')
+            return redirect('authentication:home')
     else:
         form = LoginForm()
     return render(request, 'auth/login.html', {'form': form})

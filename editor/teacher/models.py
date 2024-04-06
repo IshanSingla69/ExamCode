@@ -8,7 +8,7 @@ class Test(models.Model):
     total_Marks = models.IntegerField()
     exam_code = models.CharField(max_length=100, default='123AB', blank=False)
     def __str__(self):
-        return self.name
+        return self.exam_code
     
 class Question(models.Model):
     test = models.ForeignKey(Test, on_delete=models.CASCADE)

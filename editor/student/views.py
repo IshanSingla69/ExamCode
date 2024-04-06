@@ -7,11 +7,9 @@ from authentication.models import CustomUser
 
 def index(request):
     if request.method == 'POST':
-        form = ExamCodeInput(request.POST)
-        if form.is_valid():
-            examcode_ = form.cleaned_data['code']
-            matchingtest = Test.objects.filter(subjectCode = examcode_)
-            return HttpResponse("matchingtest")
+        examcode_ = request.POST.get("code")
+        matchingtest = Test.objects.filter(subjectCode = examcode_)
+        return render(request, 'student/testAppear.html')
     else:
         form = ExamCodeInput()
         user = request.session.get('name','guest')

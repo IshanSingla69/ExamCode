@@ -1,61 +1,69 @@
-{% extends 'base.html' %} {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
 <style>
-  .timer {
-    font-size: 20px ;
-    color: white;
-    background-color: #007bff;
-    padding: 5px;
-    border-radius: 5px;
-  }
-  .container-border {
-    border: 1px solid #ddd;
-    border-radius: 4px;
-  }
-</style>
-<div class="container-fluid d-flex flex-column vh-100">
-  <nav class="navbar bg-body-tertiary">
-    <div class="container-fluid">
-      <span class="navbar-brand mb-0 h1">Examen</span>
-      <span class="navbar-text ml-auto timer mt-2">
-        Timer: 00:00
-      </span>
-    </div>
-  </nav>
-  <div class="row flex-grow-1 no-gutters">
-    <div id="questionContainer" class="col-4 p-0">
-      <div class="card flex-grow-1">
-        <div class="card-body">
-          <span class="input-group-text">Question</span>
-          <h2>Question: Sample Question?</h2>
+    .timer {
+      font-size: 20px ;
+      color: white;
+      background-color: #007bff;
+      padding: 5px;
+      border-radius: 5px;
+    }
+    .container-border {
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    body {
+      background-image: url('https://c4.wallpaperflare.com/wallpaper/285/172/9/sunset-8k-forest-4k-wallpaper-preview.jpg');
+      background-size: cover;
+    }
+
+    .upper{
+      width: 1026px;
+      height: 60px;
+      border-radius: 21px;
+    }
+    .lower{
+      display: flex;
+    }
+    .left{
+
+    }
+    .right{
+
+    }
+    .lower-left{
+
+    }
+    .upper-left{
+
+    }
+    .upper-right{
+
+    }
+  </style>
+<body>
+    <div class="upper">
+        <div class="upper-right">
+
         </div>
-      </div>
     </div>
-    <div id="codeContainer" class="col-8 d-flex flex-column p-0">
-      <div class="card flex-grow-1">
-        <div class="card-body">
-          <span class="input-group-text">Code</span>
+    <div class="lower">
+        <div class="left">
+            <div class="upper-left">
+
+            </div>
+            <div class="lower-left">
+
+            </div>
         </div>
-        <textarea id="code" name="code" class="flex-grow-1">
-        //code here
-        </textarea>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.3/codemirror.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.3/mode/htmlmixed/htmlmixed.min.js"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.3/codemirror.min.css"/>
-        <script>
-          var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
-            lineNumbers: true,
-            mode: "htmlmixed",
-            theme: "default",
-            extraKeys: {
-              Enter: function (cm) {
-                cm.replaceSelection("\n", "end");
-              }
-            }
-          });
-          editor.setSize(null, "100%");
-        </script>
-      </div>
+        <div class="right">
+
+        </div>
     </div>
-  </div>
-</div>
-{% endblock %}
+</body>
+</html>

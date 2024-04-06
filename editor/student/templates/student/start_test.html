@@ -30,7 +30,7 @@
 <div style="width: 1171px; height: 520px; border-radius: 78px; background-color: white;">
   <div style="width: 667px; height: 150px; text-align: center; display: flex;">
       <div style="width: 50px;"></div>    
-      <div style="display: flex;">
+      <div style="display: flex; width: auto;">
       <p class="welcomeuser">Welcome&nbsp;</p><p class="welcomeuser" style="font-weight: bold;">{{ name }},</p>
   </div>
 
@@ -38,14 +38,19 @@
   <div class="line"></div> 
   <div class="welcomeuser" style="font-size: 32px;font-weight: 200;">Enter the Code</div>
   <div class="form-container">
-    <form method="post" class="codeform">
-        {% csrf_token %}
-        {{ form }}
-        <div class="form-container">
-         <input type="submit" value="Start Test">
+    <form class="row row-cols-lg-auto g-3 align-items-center" action = "{%url 'student:test'%}">
+        <div class="col-12">
+          <label class="visually-hidden" for="inlineFormInputGroupUsername">Username</label>
+          <div class="input-group">
+            <div class="input-group-text"></div>
+            <input type="text" class="form-control" name="code" id="inlineFormInputGroupUsername" placeholder="Username">
+          </div>
         </div>
-        
-    </form>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+   
 
 </div>
 
