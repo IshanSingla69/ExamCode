@@ -42,7 +42,6 @@ def register(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
-            # Save the user or do something with the cleaned_data
             messages.success(request, 'Account created successfully')
             email = form.cleaned_data['email']
             rollnumber = form.cleaned_data['rollnumber']
@@ -57,3 +56,8 @@ def register(request):
     else:
         form = SignUpForm()
     return render(request, 'auth/register.html', {'form': form})
+
+def instructions(request):
+    return render(request,'homepage/instructions.html')
+def about(request):
+    return render(request,'homepage/about.html')
