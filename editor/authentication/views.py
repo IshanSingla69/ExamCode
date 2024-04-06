@@ -19,7 +19,7 @@ def login(request):
             user = authenticate(request, username=form.cleaned_data['rollnumber'], password=form.cleaned_data['password'])
             if user is not None:
                 auth_login(request, user)
-                messages.success(request, 'Login successful')
+                # messages.success(request, 'Login successful')
                 request.session['name'] = user.first_name
                 if user.account_type == 'student':
                     return redirect('student:student_dashboard')
@@ -35,7 +35,7 @@ def login(request):
 
 def logout(request):
     auth_logout(request)
-    messages.success(request, 'Logged out successfully')
+    # messages.success(request, 'Logged out successfully')
     return redirect('authentication:home')
 
 def register(request):
