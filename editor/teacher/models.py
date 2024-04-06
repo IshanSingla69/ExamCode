@@ -2,15 +2,14 @@ from django.db import models
 
 # Create your models here.
 class Test(models.Model):
-    name = models.CharField(max_length=100)
-    subject = models.CharField(max_length=100)
-    subjectCode = models.CharField(max_length=100)
-    timeDuration = models.DurationField()
-    totalMarks = models.IntegerField()
-    examcode = models.CharField(max_length=100, default='123AB', blank=False)
-        
+    date_and_time = models.DateTimeField(default = None)
+    subject_Code = models.CharField(max_length=100)
+    time_Duration = models.DurationField()
+    total_Marks = models.IntegerField()
+    exam_code = models.CharField(max_length=100, default='123AB', blank=False)
     def __str__(self):
         return self.name
+    
 class Question(models.Model):
     test = models.ForeignKey(Test, on_delete=models.CASCADE)
     ques_id = models.IntegerField()

@@ -10,10 +10,6 @@
 </ul>
 {% endif %} 
 <div class="d-flex justify-content-end w-100">
-  <form action="{% url 'authentication:logout' %}" method="post">
-    {% csrf_token %}
-    <button type="submit" class="btn btn-danger">Logout</button>
-  </form>
 </div>
 <div class="card mt-5 mb-5" style="border-radius: 25px; color:black">
   <div class="card-body">
@@ -24,10 +20,10 @@
             {% for test in tests %}
             <li class="list-group-item d-flex align-items-center" id="" style="background-color: black;">
               <div class="p-2 flex-grow-1">
-                <h5 style="color:white">{{ test.subjectCode }}</h5>
+                <h5 style="color:white">{{ test.subject_Code }}</h5>
               </div>
           
-              <form class="p-2 ms-2" action="" method="post" name="delete">
+              <form class="p-2 ms-2" action="{%url 'teacher:SubjectInfo'%}" method="post" name="delete">
                 {% csrf_token %}
                 <button type="submit" class="btn btn-danger">Check Status</button>
               </form>

@@ -4,7 +4,7 @@
     <div
         class="container-sm"
     >
-    <form action="{%url 'teacher:add_test'%}" method="post">
+    <form action="{%url 'teacher:add_question'%}" method="post">
         {% csrf_token %}
         {% for field in form %}
             {{ field.label_tag }}

@@ -3,10 +3,11 @@ from django.http import HttpResponse
 from django.contrib import messages
 from .models import Test, Question
 from .forms import Test_Form
+
 def index(request):
-    test = Test.objects.all()
-    
-    return render(request, 'teacher/dashboard.html', {'tests': test})
+    tests = Test.objects.all()
+    test_codes = [test.subject_Code for test in tests]
+    return render(request, 'teacher/dashboard.html', {'tests': test_codes})
 
 def add_test(request):
     if request.method == 'POST':
@@ -17,7 +18,6 @@ def add_test(request):
             test = Test.objects.latest('id')
             test.examcode = exam_code
             test.save()
-            
             messages.success(request, 'Test created successfully')
             return redirect('teacher:add_question')
         else:
@@ -27,8 +27,29 @@ def add_test(request):
     return render(request, 'teacher/add_test.html', {'form': form, 'success': False})
 
 def add_question(request):
-    
     return render(request, 'teacher/add_questions.html')
+
+def QuestionCreation(request):
+    return render(request, 'teacher/QuestionCreationWindow.html')
+
+
+def SubjectInfo(request):
+    # Retrieve all data from the Test model
+    tests = Test.objects.all()
+
+    # Store data in variables
+    test_data = []
+    for test in tests:
+        test_data.append({
+            'dateandtime': test.dateandtime,
+            'subject_code': test.subject_code,
+            'time_duration': test.time_duration,
+            'total_marks': test.total_marks,
+            'exam_code': test.exam_code,
+        })
+    context = {'tests': test_data}
+    return render(request, 'teacher/Subjectinfo.html', context)
+
 
 def genExamCode():
     import random
