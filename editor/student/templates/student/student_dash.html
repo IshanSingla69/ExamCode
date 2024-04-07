@@ -24,7 +24,7 @@
     </div>
     <div class="line"></div> 
     <div>
-    <form method="post">
+    <form action="{% 'url student:attempt_test' %}" method="post">
         {% csrf_token %}
         {{ form }}
         <input type="submit" value="Submit">
