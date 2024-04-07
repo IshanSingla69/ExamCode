@@ -1,15 +1,14 @@
-<!-- create_test.html -->
 {% extends 'navbar.html' %}
 
 {% block content_nav %}
-<div class="container" style="margin: 50px;">  <!-- Add this line -->
+<div class="container" style="margin: 50px;">
     <h2>Create Test</h2>
     <button type="button" class="btn btn-primary" id="createTestBtn">Create Test</button>
 
     <style>
         .card-container {
             max-height: 400px;
-            max-width: 1200px; /* Adjust this value based on the height of six cards */
+            max-width: 1200px;
             overflow-y: auto;
         }
     </style>
@@ -36,7 +35,7 @@
             </div>
         {% endfor %}
     </div>
-</div>  <!-- Add this line -->
+</div>
 {% endblock %}
 
 {% block modal %}
@@ -59,7 +58,7 @@
         </div>
     </div>
 </div>
-<!-- Include Bootstrap JS -->
+
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-beta1/js/bootstrap.bundle.min.js"></script>
 <script>
     document.getElementById('createTestBtn').addEventListener('click', function() {

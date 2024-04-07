@@ -56,7 +56,7 @@
       <div style="display: flex; width: auto;">
       <p class="welcomeuser">Welcome&nbsp;</p><p class="welcomeuser" style="font-weight: bold;">{{ name }},</p>
   </div>
-
+  
 </div>
   <div class="line"></div> 
   <div class="welcomeuser" style="font-size: 32px;font-weight: 200;" id="EnterCode">Enter the Code</div>
@@ -70,15 +70,22 @@
             <input type="text" class="form-control" name="code" id="inlineFormInputGroupUsername" placeholder="Test Code">
           </div>
         </div>
-        {% if error_message %}
-            <div class="alert alert-danger alert-dismissible" role="alert">
-                {{ error_message }}
-            </div>
-        {% endif %}
+        
         <div class="col-12">
           <button type="submit" class="btn btn-primary">Submit</button>
         </div>
       </form>
+      {% if error_message %}
+            <div class="alert alert-danger alert-dismissible" role="alert">
+                {{ error_message }}
+            </div>
+        {% endif %}
+        {% if submitted %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        Test submitted successfully!
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+{% endif %}
 </div>
 </div>
 

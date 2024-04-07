@@ -27,6 +27,8 @@ class Question(models.Model):
     test = models.ForeignKey(Test, on_delete=models.CASCADE)
     max_marks = models.IntegerField(default=1)
     question_text = models.CharField(max_length=2000)
+    answer_text = models.TextField(null=True, default='')
+    
 
     def __str__(self):
         return self.question_text

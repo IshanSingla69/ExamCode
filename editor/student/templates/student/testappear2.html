@@ -50,6 +50,9 @@
     top: 10px;
     left: 30px; 
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: start;
 }
 
 
@@ -109,6 +112,7 @@
     top: 88px;
     text-align: center;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    font-size: 30px;
     
 }
 
@@ -122,13 +126,16 @@
     margin: 10px;
     text-align: left;
     top: 88px;
-    text-align: center;
+    padding-left: 20px;
+    padding-top: 10px;
     border: 0px;
+    font-size: 30px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    
 }
 
 </style>
-<body>
+<body onload="document.documentElement.webkitRequestFullscreen();">
     <div class="MainBox">
       <div class="QuestionBar">
         <div class="QuestionBarElements" id="Element1">Questions</div>
@@ -138,21 +145,51 @@
             <form method="get" action="{% url 'student:attempt_test' test_id=question.test.id q_id=question.id %}">
                 <button type="submit" class="btn {% if question.id == current_question.id %}btn-success{% else %}btn-primary{% endif %}">Question {{ forloop.counter }}</button>
             </form>
-        {% endfor %}
-        <button class="QuestionBarElements" id="ElementNext"></button>
-    </div>
-    
-    <button class="Beside" id="Submit">Submit</button>
-    <div
-        class="container"  id="QuestionNum"
-    >
-        {{ current_question.question_text }}
-    </div>
-    
-    <div id="Output">Output</div>
-    <input type="text" placeholder="Enter Answer" class="Answer" id="AnswerBox">
-button
-</div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+            {% endfor %}
+            <button class="QuestionBarElements" id="ElementNext"></button>
+            </div>
+            <div class="container" style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+                <form action="{%url 'student:submit_test' test_id=current_question.test.id%}" method="post">
+                    {% csrf_token %}
+                    <button class="Beside" id="Submit">Submit</button>
+                </form>
+                
+                <div class="container" id="QuestionNum">
+                    {{ current_question.question_text }}
+                </div>
+                <div id="Output">Output</div>
+                <div oncopy = "return false" onpaste="return false"  style="overflow: auto; display: flex; flex-direction: column;">
+                    <form action="{%url 'student:save_answer' test_id=current_question.test.id q_id=current_question.id%}" method="post" >
+                        {% csrf_token %}
+                        <textarea class="Answer" name="answer" id="AnswerBox" placeholder="Enter Answer"> {{current_question.answer_text}} </textarea>
+                        <div class="mt-auto d-flex justify-content-center" style="transform: translateY(100px); height: 100px;">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                    </form>
+                </div>
+                <button onclick="enterFullscreen()">Go Fullscreen</button>
+            </div>
+    <script>
+        function enterFullscreen() {
+            if (document.documentElement.requestFullscreen) {
+                document.documentElement.requestFullscreen();
+            } else if (document.documentElement.mozRequestFullScreen) { // Firefox
+                document.documentElement.mozRequestFullScreen();
+            } else if (document.documentElement.webkitRequestFullscreen) { // Chrome, Safari and Opera
+                document.documentElement.webkitRequestFullscreen();
+            } else if (document.documentElement.msRequestFullscreen) { // IE/Edge
+                document.documentElement.msRequestFullscreen();
+            }
+        }
+
+        document.addEventListener('fullscreenchange', function() {
+            if (!document.fullscreenElement) {
+                enterFullscreen();
+            }
+        });
+
+        window.onload = enterFullscreen;
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
