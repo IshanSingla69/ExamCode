@@ -11,6 +11,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    bottom: 130px;
+    right: 150px;
 }
 
 .line {
@@ -18,6 +21,8 @@
     height: 8px;
     background-color: #000;
     margin: 0 auto 10px; /* Adjust margin-top */
+    position: relative;
+    bottom: 120px;
 }
 .form-container {
     display: flex;
@@ -37,6 +42,12 @@
     margin: 0 auto; /* Center horizontally */
     margin-top: 50px; /* Adjust top margin as needed */
 }
+#hello{
+  position: relative;
+  bottom: 100px;
+  right: 100px;
+}
+
 
 </style>
 <div id="out">
@@ -48,9 +59,9 @@
 
 </div>
   <div class="line"></div> 
-  <div class="welcomeuser" style="font-size: 32px;font-weight: 200;">Enter the Code</div>
+  <div class="welcomeuser" style="font-size: 32px;font-weight: 200;" id="EnterCode">Enter the Code</div>
   <div class="form-container">
-    <form class="row row-cols-lg-auto g-3 align-items-center" action="{% url 'student:test' %}">
+    <form class="row row-cols-lg-auto g-3 align-items-center" action="{% url 'student:test' %}"id="hello">
         <div class="col-12">
           <label class="visually-hidden" for="inlineFormInputGroupUsername">Test Code</label>
           <div class="input-group">

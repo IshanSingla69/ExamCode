@@ -74,20 +74,22 @@
 
 
 
-    .login-form input[type="text"],
-    .login-form input[type="password"] {
-      width: 100%;
-      padding: 10px 0;
-      margin-bottom: 10px;
-      border: none;
-      border-bottom: 1px solid #ccc; /* Bottom border only */
-      outline: none;
-      background-color: transparent;
-    }
+  .login-form input[type="text"],
+  .login-form input[type="password"] {
+    width: 100%;
+    padding: 10px 0;
+    margin-bottom: 50px; /* Add margin to create space between fields */
+    border: none;
+    border-bottom: 1px solid #ccc;
+    outline: none;
+    background-color: transparent;
+  }
+  
+    
 
     .login-form input[type="text"]:focus,
     .login-form input[type="password"]:focus {
-      border-bottom: 1px solid #007bff; /* Change color on focus */
+      border-bottom: 1px solid #ffffff; /* Change color on focus */
     }
 
     .login-form button {
@@ -120,6 +122,58 @@
     .login-form .form-divider span {
       color: #aaa;
     }
+    .login-form{
+      width: 40%;
+      height: 30%;
+      background-color: #ffffff;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      left: 720px;
+      bottom: 50px;
+      border-radius: 20px;
+    }
+    #username{
+      position: relative;
+      right: 100px;
+      bottom: 50px;
+      border-bottom: 2px;
+      border-top: 0px;
+      border-left: 0px;
+      border-right: 0px;
+      border-color: #000;
+      border-style: solid;
+      border-radius: 0px;
+    }
+    #password{
+      position: relative;
+      right: 100px;
+      bottom: 0px;
+      border-bottom: 2px;
+      border-top: 0px;
+      border-left: 0px;
+      border-right: 0px;
+      border-color: #000;
+      border-style: solid;
+      border-radius: 0px;
+      padding-left: 10px;
+      
+    }
+    #login{
+      position: relative;
+      right: 0px;
+      bottom: 120px;
+
+    }
+    #loginbtn{
+      position: relative;
+      right: 0px;
+      top: 50px;
+      width: 250px;
+
+    }
+    
+    
 </style>
 
 <div class="parent-div">
@@ -129,12 +183,12 @@
     </div>
     <div class="child-div">
       <div class="login-form">
-          <form action="{% url 'authentication:login' %}" method="post"> 
+          <form action="{% url 'authentication:login' %}" method="post" > 
               {% csrf_token %}
-                  <div class="centered-text" style="font-size: 40px; margin-top: 30px; color: black;">Login</div>
+                  <div class="centered-text" style="font-size: 40px; margin-top: 30px; color: black;"id = "login" >Login</div>
                   <input type="username" NAME="username" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter username">
                   <input type="password" name="password" class="form-control" id="password" placeholder="Password">
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-primary" id="loginbtn">Login</button>
           </form>
       </div>
   </div>

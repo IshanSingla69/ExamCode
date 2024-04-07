@@ -8,7 +8,17 @@ class Test(models.Model):
     datecreated = models.DateTimeField(default=timezone.now)
     total_marks = models.IntegerField()
     exam_code = models.CharField(max_length=200, default='123AB')
+    published_bool = models.BooleanField(default=False)
+    def __str__(self):
+        return self.name
     
+class PublishedTest(models.Model):
+    name = models.CharField(max_length=200)
+    subject = models.CharField(max_length=200)
+    datecreated = models.DateTimeField(default=timezone.now)
+    total_marks = models.IntegerField()
+    exam_code = models.CharField(max_length=200, default='123AB')
+    published_bool = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name

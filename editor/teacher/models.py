@@ -12,6 +12,14 @@ class Test(models.Model):
     def __str__(self):
         return self.exam_code
     
+class PublishedTest(models.Model):
+    subject = models.CharField(max_length=100)
+    subject_Code = models.CharField(max_length=100)
+    total_Marks = models.IntegerField(default=100)
+    exam_code = models.CharField(max_length=100, default='123AB', blank=False)
+    def __str__(self):
+        return self.exam_code
+    
 class Question(models.Model):
     test = models.ForeignKey(Test, on_delete=models.CASCADE)
     question_text = models.TextField()

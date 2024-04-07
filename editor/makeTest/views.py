@@ -1,7 +1,7 @@
 # views.py
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404,HttpResponse
 from .forms import TestForm
-from .models import Test, Question
+from .models import Test, Question,PublishedTest
 import string, random
 
 def generate_unique_exam_code():
@@ -9,6 +9,7 @@ def generate_unique_exam_code():
         code = ''.join(random.choices(string.ascii_uppercase + string.digits, k=6))  # Generate a random string of 6 uppercase letters and digits
         if not Test.objects.filter(exam_code=code).exists():  # Check if the code is unique
             return code
+        
 
 def create_test(request):
     if request.method == 'POST':
@@ -61,6 +62,30 @@ def delete_test(request, test_id):
         print(test.question_set.all())
         test.delete()
     return redirect('makeTest:create_test')
+
+from django.shortcuts import redirect, get_object_or_404
+from .models import Test, PublishedTest
+
+def publish(request, test_id):
+    if request.method == 'POST':
+        test_to_copy = get_object_or_404(Test, pk=test_id)
+        published_test = PublishedTest()
+        name=test_to_copy.name,
+        subject=test_to_copy.subject,
+        datecreated=test_to_copy.datecreated,
+        total_marks=test_to_copy.total_marks,
+        exam_code=test_to_copy.exam_code,
+        published_bool=True  
+        published_test.save()
+        test_to_copy.published_bool = True
+        test_to_copy.save()
+        
+        # Redirect to the specified URL
+        return redirect('makeTest:create_test')
+    else:
+        # Handle the case where the request method is not POST
+        return HttpResponse("Only POST requests are allowed for this view")
+
 
 def delete_question(request, test_id, q_id):
     if request.method == 'POST':
