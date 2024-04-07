@@ -23,11 +23,14 @@
                         <p class="card-text">Subject: {{ test.subject }}</p>
                         <p class="card-text">Total Marks: {{ test.total_marks }}</p>
                         <p class="card-text">Exam Code: {{ test.exam_code }}</p> 
-                        <a href="{% url 'makeTest:view_question' test_id=test.id%}" class="btn btn-primary">Go to Test</a>
-                        <form method="post" action="{% url 'makeTest:delete_test' test_id=test.id %}">
-                            {% csrf_token %}
-                            <button type="submit" class="btn btn-danger">Delete Test</button>
-                        </form>
+                        <div class="btn-group" role="group" aria-label="Test actions">
+                            <a href="{% url 'makeTest:view_question' test_id=test.id%}" class="btn btn-primary mr-2">Go to Test</a>
+                            <form method="post" style="display: inline-block;" action="{% url 'makeTest:delete_test' test_id=test.id %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger mr-2">Delete Test</button>
+                            </form>
+                            <a href="#" class="btn btn-success">Publish</a>
+                        </div>
                     </div>
                 </div>
             </div>

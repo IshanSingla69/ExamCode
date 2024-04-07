@@ -43,14 +43,20 @@
   <div style="width: 667px; height: 150px; text-align: center; display: flex;">
       <div style="width: 60px;"></div>    
       <div style="display: flex; width: auto;">
-      <p class="welcomeuser">Welcome&nbsp;</p><p class="welcomeuser" style="font-weight: bold;">{{ name }},</p>
+        <p class="welcomeuser">Welcome&nbsp;</p><p class="welcomeuser" style="font-weight: bold;">{{ name }}</p>
   </div>
 
 </div>
+{% if error %}
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ error }}
+    </div>
+{% endif %}
   <div class="line"></div> 
   <div class="welcomeuser" style="font-size: 32px;font-weight: 200;">Enter the Code</div>
   <div class="form-container">
-    <form class="row row-cols-lg-auto g-3 align-items-center" action="{% url 'student:test' %}">
+    <form class="row row-cols-lg-auto g-3 align-items-center" action="{% url 'student:student_dashboard' %}" method="post">
+      {% csrf_token %}
         <div class="col-12">
           <label class="visually-hidden" for="inlineFormInputGroupUsername">Test Code</label>
           <div class="input-group">
