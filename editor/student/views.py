@@ -8,9 +8,7 @@ from authentication.models import CustomUser
 def index(request):
     if request.method == 'POST':
         examcode = request.POST.get("code").strip()  # Remove leading and trailing whitespace
-
         matching_tests = Test.objects.filter(exam_code__iexact=examcode)
-
         if matching_tests.exists():
             # The exam code exists
             questions = Question.objects.filter(test=matching_tests.first())

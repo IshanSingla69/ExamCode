@@ -70,12 +70,12 @@ def publish(request, test_id):
     if request.method == 'POST':
         test_to_copy = get_object_or_404(Test, pk=test_id)
         published_test = PublishedTest()
-        name=test_to_copy.name,
-        subject=test_to_copy.subject,
-        datecreated=test_to_copy.datecreated,
-        total_marks=test_to_copy.total_marks,
-        exam_code=test_to_copy.exam_code,
-        published_bool=True  
+        published_test.name=test_to_copy.name,
+        published_test.subject=test_to_copy.subject,
+        published_test.datecreated=test_to_copy.datecreated,
+        published_test.total_marks=test_to_copy.total_marks,
+        published_test.exam_code=test_to_copy.exam_code,
+        published_test.published_bool=True  
         published_test.save()
         test_to_copy.published_bool = True
         test_to_copy.save()
