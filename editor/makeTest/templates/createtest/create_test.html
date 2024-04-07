@@ -26,12 +26,18 @@
                         <form method="post" action="{% url 'makeTest:delete_test' test_id=test.id %}">
                             {% csrf_token %}
                             <button type="submit" class="btn btn-danger">Delete Test</button>
-                            {% if test.published_bool %}
+                        </form>
+                        {% if test.published_bool %}
                             <h1>Published</h1>
                         {% else %}
-                        <button href="{% url 'makeTest:publish' test_id=test.id %}" type="submit" class="btn btn-success">Publish</a>
+                            <!-- <form method="post" action="{% url 'makeTest:publish' test_id=test.id %}"> -->
+                            <form method="post" action="#"></form>
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-success">Publish</button>
+                            </form>
                         {% endif %}
-
+                    </div>
+                </div>
             </div>
         {% endfor %}
     </div>
