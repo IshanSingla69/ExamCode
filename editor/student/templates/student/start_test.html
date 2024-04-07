@@ -61,7 +61,8 @@
   <div class="line"></div> 
   <div class="welcomeuser" style="font-size: 32px;font-weight: 200;" id="EnterCode">Enter the Code</div>
   <div class="form-container">
-    <form class="row row-cols-lg-auto g-3 align-items-center" action="{% url 'student:student_dashboard' %}"id="hello">
+    <form class="row row-cols-lg-auto g-3 align-items-center" action="{% url 'student:student_dashboard' %}"id="hello" method="post">
+        {% csrf_token %}
         <div class="col-12">
           <label class="visually-hidden" for="inlineFormInputGroupUsername">Test Code</label>
           <div class="input-group">
@@ -69,6 +70,11 @@
             <input type="text" class="form-control" name="code" id="inlineFormInputGroupUsername" placeholder="Test Code">
           </div>
         </div>
+        {% if error_message %}
+            <div class="alert alert-danger alert-dismissible" role="alert">
+                {{ error_message }}
+            </div>
+        {% endif %}
         <div class="col-12">
           <button type="submit" class="btn btn-primary">Submit</button>
         </div>
