@@ -63,20 +63,25 @@ def delete_test(request, test_id):
         test.delete()
     return redirect('makeTest:create_test')
 
-from django.shortcuts import redirect, get_object_or_404
-from .models import Test, PublishedTest
-
 def publish(request, test_id):
-    if request.method == 'POST':
+    if request.method == 'GET':
+        # Retrieve the Test object with the given test_id or return a 404 error if not found
         test_to_copy = get_object_or_404(Test, pk=test_id)
-        published_test = PublishedTest()
-        published_test.name=test_to_copy.name,
-        published_test.subject=test_to_copy.subject,
-        published_test.datecreated=test_to_copy.datecreated,
-        published_test.total_marks=test_to_copy.total_marks,
-        published_test.exam_code=test_to_copy.exam_code,
-        published_test.published_bool=True  
+        
+        # Create a new PublishedTest object and copy the necessary fields from the Test object
+        published_test = PublishedTest(
+            name=test_to_copy.name,
+            subject=test_to_copy.subject,
+            datecreated=test_to_copy.datecreated,
+            total_marks=test_to_copy.total_marks,
+            exam_code=test_to_copy.exam_code,
+            published_bool=True  # Set published_bool to True for the PublishedTest
+        )
+        
+        # Save the new PublishedTest object
         published_test.save()
+        
+        # Update the published_bool field of the Test object
         test_to_copy.published_bool = True
         test_to_copy.save()
         
@@ -85,6 +90,7 @@ def publish(request, test_id):
     else:
         # Handle the case where the request method is not POST
         return HttpResponse("Only POST requests are allowed for this view")
+   
 
 
 def delete_question(request, test_id, q_id):

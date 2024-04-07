@@ -6,8 +6,8 @@ from authentication.models import CustomUser
 
 
 def index(request):
-    if request.method == 'POST':
-        examcode = request.POST.get("code").strip()  # Remove leading and trailing whitespace
+    if request.method == 'GET':
+        examcode = request.POST.get("code") # Remove leading and trailing whitespace
         matching_tests = Test.objects.filter(exam_code__iexact=examcode)
         if matching_tests.exists():
             # The exam code exists
@@ -32,4 +32,4 @@ def attempt_test(request, test_id, q_id):
         # Handle the form submission here
         pass
 
-    return render(request, 'student/testappear2.html', {'test': test, 'all_questions': questions, 'current_question':current_question})
+    return render(request, 'student/testappear.html', {'test': test, 'all_questions': questions, 'current_question':current_question})
