@@ -1,5 +1,4 @@
-# ExamCode
-# ExamCode
+# ExamCode - Documentation
 
 ## Setup Instructions:
 1. Clone this repository into your desired folder using Git clone:
